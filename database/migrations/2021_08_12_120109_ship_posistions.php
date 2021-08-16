@@ -19,8 +19,8 @@ class ShipPosistions extends Migration
             $table->integer('status');
             $table->integer('stationId');
             $table->integer('speed');
-            $table->double('lon', 7, 5);
-            $table->double('lat', 7, 5);
+            $table->decimal('lon',  11, 8);
+            $table->decimal('lat',  10, 8);
             $table->integer('course');
             $table->integer('heading');
             $table->string('rot')->nullable();
