@@ -32,5 +32,6 @@ Fields supplied are:
 * Fork this repo and create a pull request that contains your implementation in a new branch named after you.
 * Please include your Tests with your source code
 * Include instructions
+* Feel free to use the framework, libraries of your choice or plain PHP to implement the assignment
 
 **Have fun!**
