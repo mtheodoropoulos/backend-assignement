@@ -28,7 +28,6 @@ Fields supplied are:
   * text/csv
 
 **Share your work:**
-* Stage your solution on a demo page or
 * Fork this repo and create a pull request that contains your implementation in a new branch named after you.
 
 
