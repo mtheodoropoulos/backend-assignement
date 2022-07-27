@@ -21,7 +21,7 @@ Fields supplied are:
   * **latitude** and **longitude range**
   * as well as **time interval**.
 * Log incoming requests to a datastore of  your choice (plain text, database, third party service etc.)
-* Limit requests per user to **10/hour**. (Use the request remote IP as a user identifier)
+* Limit requests per user to **10/minute**. (Use the request remote IP as a user identifier)
 * Support the following content types:
   * At least two of the following: application/json, application/vnd.api+json, application/ld+json, application/hal+json
   * application/xml
