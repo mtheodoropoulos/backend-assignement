@@ -1,10 +1,7 @@
 <?php
 
-use App\Http\Controllers\VesselTrackCreateController;
-use App\Http\Controllers\VesselTrackDeleteController;
-use App\Http\Controllers\VesselTrackUpdateController;
+use App\Http\Controllers\V1\VesselTrackController;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\VesselController;
 
 /*
 |--------------------------------------------------------------------------
@@ -19,13 +16,5 @@ use App\Http\Controllers\VesselController;
 
 Route::middleware(['throttle:' . config('throttling.api.Vessels')])
     ->group(function () {
-        Route::get('/vessels', [VesselController::class, 'index']);
-        Route::get('/vessels/{mmsi}', [VesselController::class, 'show']);
-    });
-
-Route::middleware(['auth:sanctum'])
-    ->group(function () {
-        Route::post('/vessels', VesselTrackCreateController::class);
-        Route::delete('/vessels', VesselTrackDeleteController::class);
-        Route::patch('/vessels', VesselTrackUpdateController::class);
+        Route::get('/vessel-tracks', VesselTrackController::class);
     });
