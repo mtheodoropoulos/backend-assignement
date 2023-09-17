@@ -2,31 +2,24 @@
 
 namespace App\Http\Controllers\V1;
 
-use App\Http\Controllers\PublicApiController;
 use App\Http\Requests\VesselTrackSearchRequest;
 use App\Repositories\PublicApi\VesselTrackRepository;
-use Illuminate\Database\Eloquent\ModelNotFoundException;
-use Illuminate\Http\JsonResponse;
-use Illuminate\Http\Response;
+use Exception;
+use Illuminate\Database\Eloquent\Collection;
 
-class VesselTrackController extends PublicApiController
+class VesselTrackController
 {
 
-    public function __construct(private readonly VesselTrackRepository $vesselTrackRepository) {
-        parent::__construct();
-    }
+    public function __construct(private readonly VesselTrackRepository $vesselTrackRepository) {}
 
-    public function __invoke(VesselTrackSearchRequest $request): JsonResponse
+    public function __invoke(VesselTrackSearchRequest $request): array|string
     {
         $searchParameters = $request->validated();
 
         try {
-            return $this->apiResponse->success(
-                'Find vessel tracks',
-                $this->vesselTrackRepository->filterBy($searchParameters)
-            );
-        } catch (ModelNotFoundException $exception) {
-            return $this->apiResponse->error($exception->getMessage(), Response::HTTP_NOT_FOUND);
+            return $this->vesselTrackRepository->filterBy($searchParameters)->get()->toArray();
+        } catch (Exception $exception) {
+            return $exception->getMessage();
         }
     }
 

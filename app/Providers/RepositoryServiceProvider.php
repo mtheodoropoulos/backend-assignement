@@ -3,7 +3,7 @@
 namespace App\Providers;
 
 use App\Repositories\VesselTrackRepository;
-use App\Repositories\VesselTrackRepositoryInterface;
+use App\Repositories\RepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 
 class RepositoryServiceProvider extends ServiceProvider
@@ -13,7 +13,7 @@ class RepositoryServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->bind(VesselTrackRepositoryInterface::class, VesselTrackRepository::class);
+        $this->app->bind(RepositoryInterface::class, VesselTrackRepository::class);
     }
 
     /**

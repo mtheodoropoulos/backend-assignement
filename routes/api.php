@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\V1\VesselTrackController;
+use App\Http\Middleware\ContentTypeHandler;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -15,6 +16,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware(['throttle:' . config('throttling.api.Vessels')])
+    ->middleware(ContentTypeHandler::class)
     ->group(function () {
         Route::get('/vessel-tracks', VesselTrackController::class);
     });

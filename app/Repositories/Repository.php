@@ -2,22 +2,21 @@
 
 namespace App\Repositories;
 
-use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Support\Collection;
 
-abstract class Repository implements VesselTrackRepositoryInterface
+abstract class Repository implements RepositoryInterface
 {
-
-    public function __construct(protected Model $model) {}
+    protected Builder $query;
 
     public function get(): Collection
     {
-        return $this->model->get();
+        return $this->query->get();
     }
 
     public function paginate()
     {
-        return $this->model->paginate(10);
+        return $this->query->paginate(10);
     }
 
     abstract public function filterBy(array $filters);

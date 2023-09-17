@@ -7,14 +7,33 @@ use App\Repositories\Repository;
 
 class VesselTrackRepository extends Repository
 {
-    public function __construct(VesselTrack $model)
+    public function __construct()
     {
-        parent::__construct($model);
-        $this->model = $model;
+        $this->query = VesselTrack::query();
     }
 
-    public function filterBy(array $filters): ?VesselTrack
+    public function filterBy(array $filters)
     {
-        return $this->model->filter($filters);
+        if ($filters['mmsi']) {
+            $this->query->mmsi($filters['mmsi']);
+        }
+
+        if (isset($filters['coordinates'])) {
+            $this->query->geolocation($filters['coordinates']);
+        }
+
+        if (isset($filters['interval'])) {
+            $this->query->interval($filters['interval']);
+        }
+
+        return $this;
     }
 }
+
+/*
+
+&interval[start_time]=2023-01-01
+&interval[end_time]=2023-01-04
+&coordinates[min_lat]=30&coordinates[max_lat]=42.05627&coordinates[min_lon]=16.19508&coordinates[max_lon]=20
+
+ * */

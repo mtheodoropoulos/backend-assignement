@@ -2,7 +2,7 @@
 
 namespace App\Repositories;
 
-interface VesselTrackRepositoryInterface
+interface RepositoryInterface
 {
     public function get();
 
