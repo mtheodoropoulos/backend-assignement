@@ -31,8 +31,8 @@ class VesselTrackSearchRequest extends FormRequest
             'coordinates.min_lon' => 'required_with:coordinates.min_lat,coordinates.max_lat,coordinates.max_lon',
             'coordinates.max_lon' => 'required_with:coordinates.min_lat,coordinates.max_lat,coordinates.min_lon',
             'interval' => 'sometimes',
-            'interval.start_time' => 'date_format:Y-m-d',
-            'interval.end_time' => 'date_format:Y-m-d',
+            'interval.start_time' => 'integer|date_format:U',
+            'interval.end_time' => 'integer|date_format:U',
         ];
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Pagination\LengthAwarePaginator;
 use Illuminate\Support\Collection;
 
 abstract class Repository implements RepositoryInterface
@@ -14,7 +15,7 @@ abstract class Repository implements RepositoryInterface
         return $this->query->get();
     }
 
-    public function paginate()
+    public function paginate(): LengthAwarePaginator
     {
         return $this->query->paginate(10);
     }

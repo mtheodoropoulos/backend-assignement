@@ -29,11 +29,3 @@ class VesselTrackRepository extends Repository
         return $this;
     }
 }
-
-/*
-
-&interval[start_time]=2023-01-01
-&interval[end_time]=2023-01-04
-&coordinates[min_lat]=30&coordinates[max_lat]=42.05627&coordinates[min_lon]=16.19508&coordinates[max_lon]=20
-
- * */

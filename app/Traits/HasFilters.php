@@ -17,7 +17,8 @@ trait HasFilters
 
     public function scopeGeolocation($query, array $coordinates)
     {
-        return $query->whereBetween('lat', [$coordinates['min_lat'], $coordinates['max_lat']])
+        return $query
+            ->whereBetween('lat', [$coordinates['min_lat'], $coordinates['max_lat']])
             ->whereBetween('lon', [$coordinates['min_lon'], $coordinates['max_lon']]);
     }
 
@@ -25,17 +26,19 @@ trait HasFilters
     {
         if (isset($time['start_time']) && isset($time['end_time'])) {
             return $query->whereBetween('timestamp', [
-                Carbon::parse($time['start_time'])->format('Y-m-d H:i:s'),
-                Carbon::parse($time['end_time'])->format('Y-m-d H:i:s')
+                Carbon::createFromTimestamp($time['start_time'])->format('Y-m-d H:i:s'),
+                Carbon::createFromTimestamp($time['end_time'])->format('Y-m-d H:i:s')
             ]);
         }
 
         if (isset($time['start_time'])) {
-            return $query->whereDate('timestamp', '>=', Carbon::parse($time['start_time'])->format('Y-m-d H:i:s'));
+            return $query->whereDate('timestamp', '>=', Carbon::createFromTimestamp($time['start_time'])
+                ->format('Y-m-d H:i:s'));
         }
 
         if (isset($time['end_time'])) {
-            return $query->whereDate('timestamp', '<=', Carbon::parse($time['end_time'])->format('Y-m-d H:i:s'));
+            return $query->whereDate('timestamp', '<=', Carbon::createFromTimestamp($time['end_time'])
+                ->format('Y-m-d H:i:s'));
         }
 
         return $query;

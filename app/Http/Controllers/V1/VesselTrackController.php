@@ -5,7 +5,6 @@ namespace App\Http\Controllers\V1;
 use App\Http\Requests\VesselTrackSearchRequest;
 use App\Repositories\PublicApi\VesselTrackRepository;
 use Exception;
-use Illuminate\Database\Eloquent\Collection;
 
 class VesselTrackController
 {

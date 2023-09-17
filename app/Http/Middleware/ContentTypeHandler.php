@@ -31,9 +31,6 @@ class ContentTypeHandler
         }
 
         return response()->json(['error' => 'Unsupported content type'], 400);
-
-        // Continue processing the request
-        return $response;
     }
 
     private function arrayTocsv($data, $delimiter = ',', $enclosure = '"', $escape_char = "\\")
