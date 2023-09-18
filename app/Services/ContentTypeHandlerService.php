@@ -41,7 +41,7 @@ class ContentTypeHandlerService
         return stream_get_contents($f);
     }
 
-    private function handleXml($array, $rootElement = null, $xml = null)
+    private function handleXml($data, $rootElement = null, $xml = null)
     {
         // If there is no Root Element then insert root
         if ($xml === null) {
@@ -49,13 +49,13 @@ class ContentTypeHandlerService
         }
 
         // Visit all key value pair
-        foreach ($array as $k => $v) {
+        foreach ($data as $k => $v) {
 
             $key = is_numeric($k) ? 'track' : $k;
 
             // If there is nested array then call func for nested or just add child element
             is_array($v)
-                ? $this->arrayToXml($v, $k, $xml->addChild($key))
+                ? $this->handleXml($v, $k, $xml->addChild($key))
                 : $xml->addChild($key, $v);
         }
 

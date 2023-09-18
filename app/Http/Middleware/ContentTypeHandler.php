@@ -13,10 +13,9 @@ class ContentTypeHandler
 
     public function handle(Request $request, Closure $next)
     {
-//        dd($next($request)->getContent());
         return $this->contentTypeHandlerService->handle(
             $request->header('Content-Type'),
-            (array) $next($request)->getContent()
+            json_decode($next($request)->getContent(), true)
         );
     }
 }
