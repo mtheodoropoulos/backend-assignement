@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Repositories\VesselTrackRepository;
+use App\Repositories\PublicApi\VesselTrackRepository;
 use App\Repositories\RepositoryInterface;
 use Illuminate\Support\ServiceProvider;
 

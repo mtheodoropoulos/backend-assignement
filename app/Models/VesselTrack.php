@@ -14,6 +14,14 @@ class VesselTrack extends Model
     use HasFactory;
     use SoftDeletes;
 
+    /**
+     * @var array|string[]
+     */
+    public static array $exportable = [
+        'mmsi', 'status', 'stationId', 'speed', 'lon', 'lat', 'course', 'heading', 'rot', 'timestamp', 'created_at',
+        'updated_at', 'deleted_at'
+    ];
+
     protected $fillable = [
         'mmsi', 'status', 'stationId', 'speed', 'lon', 'lat', 'course', 'heading', 'rot', 'timestamp', 'created_at',
         'updated_at', 'deleted_at'

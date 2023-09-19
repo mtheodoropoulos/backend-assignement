@@ -2,14 +2,14 @@
 
 namespace App\Http\Middleware;
 
-use App\Services\ContentTypeHandlerService;
+use App\Services\VesselTrackContentTypeHandlerService;
 use Closure;
 use Illuminate\Http\Request;
 
-class ContentTypeHandler
+class VesselTrackContentTypeHandler
 {
 
-    public function __construct(protected ContentTypeHandlerService $contentTypeHandlerService){}
+    public function __construct(protected VesselTrackContentTypeHandlerService $contentTypeHandlerService){}
 
     public function handle(Request $request, Closure $next)
     {

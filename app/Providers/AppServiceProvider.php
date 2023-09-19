@@ -2,7 +2,7 @@
 
 namespace App\Providers;
 
-use App\Services\ContentTypeHandlerService;
+use App\Services\VesselTrackContentTypeHandlerService;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -12,7 +12,7 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app->singleton(ContentTypeHandlerService::class);
+        $this->app->singleton(VesselTrackContentTypeHandlerService::class);
     }
 
     /**
