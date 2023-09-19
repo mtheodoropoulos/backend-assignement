@@ -11,7 +11,6 @@ class VesselTrackContentTypeHandlerService
 
     public function handle($header, $request)
     {
-
         $handler = $this->handlerFactory->createHandler($header);
 
         return (new Response($handler->handle($request)))
