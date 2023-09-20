@@ -32,12 +32,12 @@ trait HasFilters
         }
 
         if (isset($time['start_time'])) {
-            return $query->whereDate('timestamp', '>=', Carbon::createFromTimestamp($time['start_time'])
+            return $query->where('timestamp', '>=', Carbon::createFromTimestamp($time['start_time'])
                 ->format('Y-m-d H:i:s'));
         }
 
         if (isset($time['end_time'])) {
-            return $query->whereDate('timestamp', '<=', Carbon::createFromTimestamp($time['end_time'])
+            return $query->where('timestamp', '<=', Carbon::createFromTimestamp($time['end_time'])
                 ->format('Y-m-d H:i:s'));
         }
 

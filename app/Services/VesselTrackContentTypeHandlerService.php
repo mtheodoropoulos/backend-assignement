@@ -4,16 +4,19 @@ namespace App\Services;
 
 use App\Factories\ContentTypeConverterFactory;
 use Illuminate\Http\Response;
+use Symfony\Component\HttpFoundation\Response as ResponseAlias;
 
 class VesselTrackContentTypeHandlerService
 {
     public function __construct(readonly ContentTypeConverterFactory $handlerFactory) {}
 
-    public function handle($header, $request)
+    public function handle($header, $request, $statusCode)
     {
-        $handler = $this->handlerFactory->createHandler($header);
+        $handler = ($statusCode !== ResponseAlias::HTTP_OK)
+            ? $request
+            : $this->handlerFactory->createHandler($header)->handle($request);
 
-        return (new Response($handler->handle($request)))
+        return (new Response($handler, $statusCode))
             ->header('Content-Type', $header);
     }
 }

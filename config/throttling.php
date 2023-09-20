@@ -2,6 +2,6 @@
 
 return [
     'api' => [
-        'VesselTracks' => 10
+        'VesselTracks' => 2
     ]
 ];

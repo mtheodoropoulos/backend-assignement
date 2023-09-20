@@ -14,7 +14,8 @@ class VesselTrackRepository extends Repository
 
     public function filterBy(array $filters)
     {
-        if ($filters['mmsi']) {
+
+        if (isset($filters['mmsi'])) {
             $this->query->mmsi($filters['mmsi']);
         }
 

@@ -26,14 +26,8 @@ class ErrorLoggingMiddleware
             // Log the exception details
             Log::error('Exception', [
                 'message' => $exception->getMessage(),
-                'stack_trace' => $exception->getTraceAsString(),
                 'timestamp' => now(),
             ]);
-
-            // Handle or re-throw the exception as needed
-            app(Handler::class)->report($exception);
-
-            throw $exception;
         }
     }
 }

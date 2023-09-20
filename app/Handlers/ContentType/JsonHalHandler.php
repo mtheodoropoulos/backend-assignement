@@ -8,7 +8,8 @@ class JsonHalHandler extends ContentTypeConverterFactory
 {
     public function handle($content): bool|string
     {
-        $href = 'https://example.org/data/';
+        $href = config('app.url') . '/data/';
+
         $halData = [
             '_links' => [
                 'self' => ['href' => $href],
@@ -39,27 +40,6 @@ class JsonHalHandler extends ContentTypeConverterFactory
                     'deleted_at' => $item['deleted_at'],
                 ];
             }
-        } else {
-            $halData['_embedded']['resource'] = [
-                [
-                    '_links' => [
-                        'self' => ['href' => $href . $content['mmsi']],
-                    ],
-                    'mmsi' => $content['mmsi'],
-                    'status' => $content['status'],
-                    'stationId' => $content['stationId'],
-                    'speed' => $content['speed'],
-                    'lon' => $content['lon'],
-                    'lat' => $content['lat'],
-                    'course' => $content['course'],
-                    'heading' => $content['heading'],
-                    'rot' => $content['rot'],
-                    'timestamp' => $content['timestamp'],
-                    'created_at' => $content['created_at'],
-                    'updated_at' => $content['updated_at'],
-                    'deleted_at' => $content['deleted_at'],
-                ],
-            ];
         }
 
         return json_encode($halData, JSON_PRETTY_PRINT);

@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::middleware(['throttle:' . config('throttling.api.VesselTracks')])
-    ->middleware(VesselTrackContentTypeHandler::class)
+Route::middleware(VesselTrackContentTypeHandler::class)
+    ->middleware(['throttle:' . config('throttling.api.VesselTracks')])
     ->group(function () {
         Route::get('/vessel-tracks', VesselTrackController::class);
     });
