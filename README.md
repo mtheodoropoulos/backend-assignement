@@ -20,15 +20,20 @@ Fields supplied are:
   * **mmsi** (single or multiple)
   * **latitude** and **longitude range**
   * as well as **time interval**.
-* Log incoming requests to a datastore of  your choice (plain text, database, third party service etc.)
-* Limit requests per user to **10/hour**. (Use the request remote IP as a user identifier)
+* Log incoming requests to a datastore of your choice (plain text, database, third party service etc.)
+* Limit requests per user to **10/minute**. (Use the request remote IP as a user identifier)
 * Support the following content types:
   * At least two of the following: application/json, application/vnd.api+json, application/ld+json, application/hal+json
   * application/xml
   * text/csv
 
 **Share your work:**
-* Stage your solution on a demo page or
 * Fork this repo and create a pull request that contains your implementation in a new branch named after you.
+
+
+**Notes:** 
+* Please include your Tests with your source code
+* Include instructions
+* Feel free to use the framework, libraries of your choice or plain PHP to implement the assignment
 
 **Have fun!**
